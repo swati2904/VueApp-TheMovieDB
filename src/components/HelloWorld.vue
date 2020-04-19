@@ -1,14 +1,22 @@
 <template>
   <div class="hello">
     <h1>{{ msg }}</h1>
+    <Table/>
   </div>
 </template>
 
 <script>
+
+import Table from "./Table";
+
 export default {
-  name: 'HelloWorld',
   props: {
     msg: String
+    // title:"",
+    // api:"",
+  },
+  components:{
+    Table
   }
 }
 </script>
