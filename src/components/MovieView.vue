@@ -1,6 +1,6 @@
 <template>
-  <div class="hello">
-    <h1>{{ title }}</h1>
+  <div class="wrap">
+    <TableHeader :title="title"/>
     <Table
       :columns="columns"
       :datasource="datasource"
@@ -16,6 +16,7 @@
 
 import Table from "./Table";
 import axios from "axios";
+import TableHeader from "./TableHeader";
 
 export default {
   data(){
@@ -33,7 +34,8 @@ export default {
     pageSize: Number,
   },
   components:{
-    Table
+    Table,
+    TableHeader
   },
   methods:{
     OnKeyChange(e){
@@ -70,7 +72,6 @@ export default {
   computed:{
   },
   created(){
-    // https://api.themoviedb.org/3/movie/550?api_key=d1cb2cce7a129cc412e9abc4c00e23bc
     this.fetchData();
   },
   mounted(){
@@ -82,18 +83,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
+
+.wrap{
+    margin: 20px 0px;
+    border: 5px solid #304455;
+    border-radius: 5px;
 }
 </style>
