@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="tablewrap">
     <a-table 
       :columns="columns" 
       :dataSource="datasource" 
@@ -11,35 +11,57 @@
     >
       <template slot="poster_path" slot-scope="data">
         <div class="poster">
-          <img
-              v-if="data.poster_path"
-              :src="`https://image.tmdb.org/t/p/w500${data.poster_path}`"
-              alt="image-alt"
-          />
+          <a-tooltip placement="topLeft" :title="data.overview">
+            <img
+                v-if="data.poster_path"
+                :src="`https://image.tmdb.org/t/p/w500${data.poster_path}`"
+                alt="image-alt"
+            />
+          </a-tooltip>
         </div>
       </template>
 
       <template slot="title" slot-scope="data" >
-          <a-tooltip placement="topLeft" :title="data.overview">
-            <div>{{  data.title }}</div>
+            <div><a @click="onMovieSelect(data.id)">{{  data.title }}</a></div>
             <div :style="{ fontSize:'20px', fontWeight:'600'}">{{  data.release_date }}</div>
-        </a-tooltip>
+      </template>
+
+      <template slot="popularity" slot-scope="data">
+          <div>
+              <a-progress
+                type="circle"
+                :strokeColor="{
+                  '100%': '#304455',
+                  '0%': '#4fc08d',
+                }"
+                :percent="(''+data.popularity).split('.')[0]"
+                :width="70"
+                :strokeWidth="7"
+                
+              />
+          </div>
       </template>
     </a-table>
-    <a-button type="primary" @click="isModalVisible = true">Open Modal</a-button>
-    <a-modal title="Basic Modal" :visible="isModalVisible" :footer="null" @cancel="isModalVisible = false" :width="620">
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-    </a-modal>
+
+    <MovieModal
+      v-if="isModalVisible"
+      :isMovieModalVisible="isModalVisible"
+      :movieId="movieId"
+      @close:modal="onMovieClose"
+    />
   </div>
 </template>
 <script>
 
+
+import MovieModal from "./MovieModal";
+
+
 export default {
   data(){
     return{
-      isModalVisible: false
+      isModalVisible: false,
+      movieId:''
     }
   },
   props:{
@@ -48,10 +70,29 @@ export default {
     loading: Boolean,
     pageSize: Number,
     totalResults: Number
+  },
+  components:{
+    MovieModal
+  },
+  methods: {
+    onMovieSelect(movieId){
+      this.movieId = movieId;
+      this.isModalVisible = true;
+    },
+    onMovieClose(){
+      this.isModalVisible = false;
+      this.movieId = '';
+    }
   }
 };
 </script>
 <style scoped>
+
+/* .tablewrap .ant-progress-text{
+  font-weight: 600;
+  color: #304455;
+} */
+
 .poster{
   width:90px;
   height:90px;
@@ -70,7 +111,3 @@ export default {
   }
 }
 </style>
-
-
-<table>
-  <td> <slot name="title"> </slot> <td>

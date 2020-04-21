@@ -17,6 +17,7 @@
 import Table from "./Table";
 import axios from "axios";
 import TableHeader from "./TableHeader";
+import { MOVIE_API } from "../extras/endpoints.js"
 
 export default {
   data(){
@@ -50,7 +51,7 @@ export default {
         api_key:"d1cb2cce7a129cc412e9abc4c00e23bc",
         page: this.currentPage
       }
-      axios.get( `https://api.themoviedb.org/3/movie/${this.type}`, { 
+      axios.get(`${MOVIE_API}${this.type}`, { 
         params:{
           ...params
         }

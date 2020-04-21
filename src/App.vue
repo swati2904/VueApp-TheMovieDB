@@ -13,6 +13,7 @@
         :columns="topRatedColumn"
         type="upcoming"
       />
+      <Footer/>
       
     </div>
       
@@ -24,6 +25,7 @@
 <script>
 import MovieView from './components/MovieView.vue'
 import Header from './components/Header.vue'
+import Footer from './components/Footer.vue'
 
 const topRatedColumn = [
   {
@@ -43,8 +45,8 @@ const topRatedColumn = [
   },
   {
     title: 'Popularity',
-    dataIndex: 'popularity',
     key: 'popularity',
+    scopedSlots : { customRender: 'popularity' }
   },
   {
     title: 'Average Vote',
@@ -67,6 +69,7 @@ export default {
   components: {
     MovieView,
     Header,
+    Footer,
     
   }
 }
