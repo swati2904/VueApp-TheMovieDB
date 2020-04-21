@@ -34,7 +34,7 @@
                   '100%': '#304455',
                   '0%': '#4fc08d',
                 }"
-                :percent="(''+data.popularity).split('.')[0]"
+                :percent="data.popularity"
                 :width="70"
                 :strokeWidth="7"
                 
@@ -52,6 +52,20 @@
   </div>
 </template>
 <script>
+/*
+About Table
+============
+1.) 
+
+
+probs
+=====
+ columns: Array,
+ datasource: Array,
+ loading: Boolean,
+ pageSize: Number,
+ totalResults: Number
+*/
 
 
 import MovieModal from "./MovieModal";
@@ -88,10 +102,6 @@ export default {
 </script>
 <style scoped>
 
-/* .tablewrap .ant-progress-text{
-  font-weight: 600;
-  color: #304455;
-} */
 
 .poster{
   width:90px;

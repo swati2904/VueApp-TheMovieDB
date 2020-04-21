@@ -6,6 +6,16 @@
     </div>
 </template>
 <script>
+
+/*
+About TableHeader
+==================
+1.) In this component, perform the functionality of the color change in the table header part.
+2.) Once we touch the header around the top of the part it just slide it.
+
+*/
+
+
 export default {
     name: "TableHeader",
     props:{
@@ -19,6 +29,7 @@ export default {
     
 }
 </script>
+
 <style scoped>
 p{
     margin: 0;

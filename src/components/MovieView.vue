@@ -14,6 +14,21 @@
 
 <script>
 
+/*
+About MovieView:
+================ 
+1. In this component, the API is call and we just fetching the data, and put into the table.
+2. To more about the table we have also done the pagination
+
+Props
+======
+In probs we have to pass type .
+title: String, --> It will shows the table header like Top_rated_movie and Upcoming_movie .
+type: String,  --> This is API extension i.e. upcoming , top movies
+columns: Array, --> tables columns.
+pageSize: Number --> It controls the size of the page, Whether you want to increase it or decrease it
+*/
+
 import Table from "./Table";
 import axios from "axios";
 import TableHeader from "./TableHeader";
@@ -56,14 +71,18 @@ export default {
           ...params
         }
       })
+      
       .then( response => response.data )
       .then( response => {
         let { page, results, total_results } = response
-        this.datasource = results;
+        this.datasource = results.map( (item, index) => {
+          return {
+            ...item,
+            ...{ key: index }
+          }
+        });
         this.currentPage = page;
         this.totalResults = total_results;
-        console.log(response);
-        console.log(page, results, total_results);
       })
       .finally( () => {
         this.loading = false;

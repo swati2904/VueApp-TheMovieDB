@@ -14,12 +14,21 @@
 </template>
 
 <script>
+
+/*
+
+About
+======
+
+Header Try to give the outlook like the proper content inside it.
+*/
 export default {
     
 }
 </script>
 
 <style scoped>
+@import "https://fonts.googleapis.com/css?family=Lato:400,700";
 .section{
     width: 100%;
     margin: 0;
@@ -30,7 +39,7 @@ export default {
 }
 .coloumn_wrapper{
     flex-wrap: wrap;
-    width: 100vw;
+    width: 100%;
     display: flex;
     padding: 110px 20px;
 }
@@ -39,17 +48,25 @@ export default {
     margin-bottom: 20px;
 }
 h1 {
-font-size: 3em;
+font-size: 5em;
   text-transform: uppercase;
-  color:whitesmoke;
+  color:rgb(206, 212, 210);
   font:bolder;
   line-height: 1;
+  text-shadow: 5px 5px 5px rgb(115, 192, 192);
+
+  
 }
 h2{
-    font-size: 2em;
+    /* font-size: 2em; */
     font-weight: lighter;
     margin: 0;
     color: #4fc08d;
+    font-family: 'Tangerine', serif;
+    font-size: 30px;
+    text-shadow: 4px 4px 4px #aaa;
+
+    
 }
 
 

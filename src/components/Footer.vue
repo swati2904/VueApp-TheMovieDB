@@ -64,15 +64,20 @@
 </template>
 
 <script>
+/*
+About
+=====
+
+Done all the required functionality of the footer part.
+*/
 export default {
     
 }
 </script>
 <style scoped>
 footer{
-    max-width: 100%;
     background-size: cover;
-    background: rgb(48,77,85);
+    /* background: rgb(48,77,85); */
     background: linear-gradient(90deg, rgba(48,77,85,0.8099614845938375) 8%, rgba(79,192,141,1) 63%, rgba(40,202,198,1) 100%, rgba(0,212,255,1) 100%);
     display: flex;
     flex-wrap: wrap;
@@ -82,15 +87,11 @@ footer{
 
 footer,nav{
     display:flex;
-    flex: 0 0 1;
-    padding: 85 0;
+    width: 100%;
+    justify-content: space-around;
+  
 }
 
-footer,nav,div{
-    box-sizing: border-box;
-    
-
-}
 h3{
     margin: 0;
     font-weight: bolder;
@@ -103,12 +104,6 @@ ul{
     list-style-type: none;
     margin: 0;
     padding: 0;
-    display: block;
-    margin-block-start: 1em;
-    margin-block-end: 1em;
-    margin-inline-start: 0px;
-    margin-inline-end: 0px;
-    padding-inline-start: 40px;
 }
 footer nav ul li{
     margin: 0;
@@ -118,8 +113,7 @@ footer nav ul li{
 
 }
 li{
-    display: list-item;
-    box-sizing: border-box;
+    
     overflow: hidden;
     color:black;
     
