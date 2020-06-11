@@ -1,4 +1,4 @@
-# mountyfrontend
+#
 
 ## Project setup
 ```
